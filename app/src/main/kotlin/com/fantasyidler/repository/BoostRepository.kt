@@ -39,7 +39,7 @@ class BoostRepository @Inject constructor(
          * Flat multiplier on every XP gain, applied to all players (ironman included) and
          * stacked on top of the purchased/prestige boosts. Set to 1L to disable.
          */
-        const val GLOBAL_XP_MULTIPLIER = 10L
+        const val GLOBAL_XP_MULTIPLIER = 1L
     }
 
     /**
