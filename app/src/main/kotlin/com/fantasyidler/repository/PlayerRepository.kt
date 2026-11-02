@@ -739,7 +739,7 @@ class PlayerRepository @Inject constructor(
             extraSlots += bonuses?.get("queue_slots")?.toInt() ?: 0
         }
         if (flags.monumentTier >= 4) extraSlots += 1
-        return 3 + extraSlots
+        return 3 + extraSlots + 15
     }
 
     /** Appends an action to the queue. Returns false (no change) if the queue is already full. */
