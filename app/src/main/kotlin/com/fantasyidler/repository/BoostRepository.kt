@@ -30,8 +30,17 @@ class BoostRepository @Inject constructor(
      * stack multiplicatively — 1, 2, or 4 (issue #1523).
      */
     fun xpBoostFactor(skill: String, flags: PlayerFlags, now: Long = System.currentTimeMillis()): Long =
-        (if (!flags.ironman && flags.xpBoostExpiresAt > now) 2L else 1L) *
+        GLOBAL_XP_MULTIPLIER *
+            (if (!flags.ironman && flags.xpBoostExpiresAt > now) 2L else 1L) *
             (if ((flags.prestigeXpBoosts[skill] ?: 0L) > now) 2L else 1L)
+
+    companion object {
+        /**
+         * Flat multiplier on every XP gain, applied to all players (ironman included) and
+         * stacked on top of the purchased/prestige boosts. Set to 1L to disable.
+         */
+        const val GLOBAL_XP_MULTIPLIER = 10L
+    }
 
     /**
      * Combined XP multiplier for [skill]: purchased and post-prestige 2x boosts, church
